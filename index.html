@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformate Estética – Cursos & Tratamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --wine:       #6B1A2A;
+  --wine-deep:  #4A0F1C;
+  --wine-dark:  #320A12;
+  --wine-mid:   #8B2438;
+  --wine-light: #C4697A;
+  --rose:       #F2D4D8;
+  --rose-pale:  #FBF3F4;
+  --gold:       #C9A96E;
+  --gold-light: #EDD9B3;
+  --cream:      #FDF8F5;
+  --white:      #FFFFFF;
+  --text:       #2A0A10;
+  --text-mid:   #6B3040;
+  --text-light: #A06070;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden;}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;
+  background:rgba(50,10,18,0.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(201,169,110,0.15);
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:1px;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--wine-mid);color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;border-radius:2px;text-decoration:none;border:1px solid rgba(201,169,110,0.3);transition:background 0.2s;}
+.nav-cta:hover{background:var(--wine);}
+@media(max-width:768px){nav{padding:14px 20px;}.nav-links{display:none;}}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1800&auto=format&fit=crop&q=80');background-size:cover;background-position:center top;filter:brightness(0.3) saturate(0.6);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(50,10,18,0.5) 0%,rgba(50,10,18,0.2) 50%,var(--cream) 100%);}
+.hero-content{position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.35);border-radius:100px;padding:8px 24px;margin-bottom:36px;animation:fadeUp 0.8s ease both;}
+.hero-eyebrow span{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);}
+.hero-eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:0.5;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(54px,11vw,120px);font-weight:900;line-height:0.9;color:var(--white);letter-spacing:-3px;animation:fadeUp 0.9s 0.1s ease both;}
+.hero h1 em{font-style:italic;color:var(--gold);display:block;}
+.hero-tagline{margin-top:24px;font-size:clamp(12px,1.5vw,14px);letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.55);animation:fadeUp 1s 0.2s ease both;}
+.hero-desc{max-width:480px;margin:28px auto 0;font-size:15.5px;color:rgba(255,255,255,0.6);line-height:1.85;animation:fadeUp 1s 0.3s ease both;}
+.hero-btns{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:fadeUp 1s 0.4s ease both;}
+
+.btn-primary{background:linear-gradient(135deg,var(--wine-mid),var(--wine-deep));color:var(--white);font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;padding:17px 40px;border-radius:2px;border:1px solid rgba(201,169,110,0.3);cursor:pointer;text-decoration:none;display:inline-block;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 8px 32px rgba(107,26,42,0.5);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(107,26,42,0.65);}
+.btn-ghost{background:transparent;color:var(--gold-light);font-family:'DM Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;padding:16px 36px;border-radius:2px;border:1px solid rgba(201,169,110,0.4);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
+.btn-ghost:hover{background:rgba(201,169,110,0.1);border-color:var(--gold);}
+.btn-wine{background:var(--wine);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:15px 36px;border-radius:2px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.2s;}
+.btn-wine:hover{background:var(--wine-mid);transform:translateY(-2px);}
+
+.photo-strip{padding:0;background:var(--white);display:grid;grid-template-columns:repeat(4,1fr);height:360px;overflow:hidden;}
+.photo-strip-item{position:relative;overflow:hidden;cursor:pointer;}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease,filter 0.4s;filter:saturate(0.7) brightness(0.8);}
+.photo-strip-item:hover img{transform:scale(1.08);filter:saturate(1) brightness(0.85);}
+.photo-strip-item .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(50,10,18,0.85) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px;}
+.photo-strip-item .overlay span{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--white);font-weight:600;}
+@media(max-width:700px){.photo-strip{grid-template-columns:1fr 1fr;height:300px;}}
+
+.ticker{background:linear-gradient(135deg,var(--wine-deep),var(--wine));padding:13px 0;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(201,169,110,0.2);border-bottom:1px solid rgba(201,169,110,0.2);}
+.ticker-track{display:inline-flex;animation:ticker 25s linear infinite;}
+.ticker-track span{font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.7);padding:0 32px;}
+.ticker-track .star{color:var(--gold);font-size:8px;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+section{padding:110px 24px;}
+.container{max-width:1140px;margin:0 auto;}
+.sec-label{display:inline-block;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--wine-mid);border-bottom:1px solid var(--wine-light);padding-bottom:6px;margin-bottom:22px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5.5vw,64px);font-weight:700;line-height:1.05;color:var(--wine-dark);}
+.sec-title em{font-style:italic;color:var(--wine-mid);}
+.sec-title .gold{color:var(--gold);}
+
+.treatments{background:var(--rose-pale);}
+.treatments-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:80px;}
+@media(max-width:768px){.treatments-intro{grid-template-columns:1fr;gap:40px;}}
+.treatments-intro-img{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/5;}
+.treatments-intro-img img{width:100%;height:100%;object-fit:cover;filter:saturate(0.85);}
+.treatments-intro-img::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(107,26,42,0.25),transparent);}
+.treat-badge{position:absolute;bottom:24px;left:24px;right:24px;z-index:2;background:rgba(50,10,18,0.88);border:1px solid rgba(201,169,110,0.3);border-radius:3px;padding:16px 20px;backdrop-filter:blur(6px);}
+.treat-badge p{font-size:12px;color:var(--gold);letter-spacing:1px;margin-bottom:4px;}
+.treat-badge strong{font-size:17px;color:var(--white);font-family:'Playfair Display',serif;}
+
+.treat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+.treat-card{background:var(--white);border-radius:3px;overflow:hidden;box-shadow:0 4px 30px rgba(107,26,42,0.07);transition:transform 0.3s,box-shadow 0.3s;}
+.treat-card:hover{transform:translateY(-5px);box-shadow:0 14px 50px rgba(107,26,42,0.14);}
+.treat-card-img{height:200px;overflow:hidden;}
+.treat-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;filter:saturate(0.8);}
+.treat-card:hover .treat-card-img img{transform:scale(1.07);}
+.treat-card-body{padding:24px 26px 28px;}
+.treat-icon{width:38px;height:38px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px;}
+.treat-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--wine-dark);margin-bottom:10px;}
+.treat-card-desc{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.treat-card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--wine-mid);text-decoration:none;transition:gap 0.2s;}
+.treat-card-link:hover{gap:10px;}
+
+.gallery{background:var(--wine-dark);padding:100px 0;}
+.gallery .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+.gallery .sec-label{color:var(--gold-light);border-color:var(--wine-light);}
+.gallery .sec-title{color:var(--white);}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:4px;margin-top:48px;border-radius:4px;overflow:hidden;}
+.gallery-item{overflow:hidden;position:relative;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s,filter 0.4s;filter:saturate(0.75) brightness(0.85);}
+.gallery-item:hover img{transform:scale(1.05);filter:saturate(1) brightness(0.9);}
+.gallery-item:first-child{grid-row:span 2;min-height:500px;}
+.gallery-item:not(:first-child){min-height:246px;}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(50,10,18,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:20px;}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-overlay span{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:var(--white);}
+@media(max-width:700px){.gallery-grid{grid-template-columns:1fr 1fr;}.gallery-item:first-child{grid-row:span 1;grid-column:span 2;}}
+
+.courses{background:var(--cream);}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:60px;}
+.course-card{background:var(--white);border-radius:3px;overflow:hidden;box-shadow:0 4px 40px rgba(107,26,42,0.07);display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s;}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 18px 60px rgba(107,26,42,0.14);}
+.ccard-header{background:linear-gradient(145deg,var(--wine-dark) 0%,var(--wine-deep) 100%);padding:32px 32px 28px;position:relative;overflow:hidden;}
+.ccard-header::before{content:'';position:absolute;top:-40px;right:-40px;width:130px;height:130px;border-radius:50%;background:rgba(201,169,110,0.08);}
+.ccard-num{position:absolute;top:16px;right:20px;font-family:'Playfair Display',serif;font-size:72px;font-weight:900;color:rgba(255,255,255,0.06);line-height:1;}
+.ccard-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;position:relative;z-index:1;}
+.ccard-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--white);line-height:1.22;position:relative;z-index:1;}
+.ccard-body{padding:28px 32px 32px;flex:1;display:flex;flex-direction:column;}
+.ccard-desc{font-size:13.5px;color:var(--text-mid);line-height:1.8;margin-bottom:22px;}
+.module-title{font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--wine);font-weight:700;margin-bottom:12px;margin-top:18px;}
+.module-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.module-list li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text);line-height:1.5;}
+.module-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--wine-light);flex-shrink:0;margin-top:6px;}
+.pills-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;}
+.pill{background:var(--rose);border-radius:100px;padding:5px 13px;font-size:11px;font-weight:600;color:var(--wine-mid);letter-spacing:0.3px;}
+.price-box{margin-top:auto;background:linear-gradient(135deg,#FDF0F2,#F8E5E9);border-radius:3px;padding:20px 22px;border-left:3px solid var(--wine-mid);}
+.price-from{font-size:11px;color:#B09090;text-decoration:line-through;margin-bottom:3px;}
+.price-main{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--wine-dark);}
+.price-alt{font-size:12.5px;color:var(--text-mid);margin-top:6px;line-height:1.6;}
+.promo-tag{display:inline-block;background:var(--wine);color:var(--white);font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:8px;}
+.ccard-cta{margin-top:20px;display:block;text-align:center;width:100%;}
+
+.depos{background:var(--rose-pale);}
+.depos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:50px;}
+.depo-card{background:var(--white);border-radius:3px;padding:32px 28px;border-top:3px solid var(--wine-mid);box-shadow:0 4px 24px rgba(107,26,42,0.07);}
+.depo-stars{color:var(--gold);font-size:14px;margin-bottom:16px;letter-spacing:2px;}
+.depo-text{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:var(--wine-dark);line-height:1.6;margin-bottom:20px;}
+.depo-author{display:flex;align-items:center;gap:12px;}
+.depo-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--wine-light),var(--wine-mid));display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--white);font-family:'Playfair Display',serif;font-weight:700;}
+.depo-name{font-size:13px;font-weight:700;color:var(--wine-dark);}
+.depo-role{font-size:11px;color:var(--text-light);margin-top:2px;}
+
+.location-sec{background:var(--wine-dark);padding:100px 24px;position:relative;overflow:hidden;}
+.location-sec::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.1) 0%,transparent 70%);}
+.location-sec .sec-label{color:var(--gold-light);border-color:rgba(201,169,110,0.3);}
+.location-sec .sec-title{color:var(--white);}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:50px;}
+@media(max-width:768px){.location-grid{grid-template-columns:1fr;gap:40px;}}
+.location-img{border-radius:4px;overflow:hidden;aspect-ratio:4/3;}
+.location-img img{width:100%;height:100%;object-fit:cover;filter:saturate(0.7) brightness(0.75);}
+.location-info{display:flex;flex-direction:column;gap:28px;}
+.loc-item{display:flex;gap:16px;align-items:flex-start;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.loc-item:last-child{border-bottom:none;padding-bottom:0;}
+.loc-icon{width:44px;height:44px;border-radius:50%;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.loc-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.loc-value{font-size:17px;font-weight:600;color:var(--white);}
+.loc-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-top:3px;}
+
+.final{position:relative;padding:120px 24px;text-align:center;overflow:hidden;}
+.final-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1600&auto=format&fit=crop&q=80');background-size:cover;background-position:center;filter:brightness(0.18) saturate(0.4);}
+.final-content{position:relative;z-index:1;}
+.final .sec-label{color:var(--gold-light);border-color:rgba(201,169,110,0.4);}
+.final .sec-title{color:var(--white);}
+.final p{max-width:480px;margin:22px auto 44px;color:rgba(255,255,255,0.55);font-size:15px;line-height:1.85;}
+.final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+footer{background:var(--wine-dark);border-top:1px solid rgba(201,169,110,0.15);padding:40px 24px;text-align:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:14px;}
+footer p{font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;line-height:1.9;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.delay-1{transition-delay:0.1s;}
+.delay-2{transition-delay:0.2s;}
+.delay-3{transition-delay:0.3s;}
+
+.divider-rose{width:50px;height:2px;background:linear-gradient(90deg,var(--wine-mid),transparent);margin:20px 0;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Transformate Estética</div>
+  <div class="nav-links">
+    <a href="#tratamentos">Tratamentos</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <a href="https://wa.me/5511977451346" target="_blank" class="nav-cta">WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="dot"></div>
+      <span>Transformate Estética — Av. Sapopemba, 8282</span>
+      <div class="dot"></div>
+    </div>
+    <h1>Beleza é<br><em>ciência.</em></h1>
+    <p class="hero-tagline">Tratamentos · Cursos · Certificação Profissional</p>
+    <p class="hero-desc">Cuidamos de você com os protocolos mais eficazes do mercado. E te ensinamos a fazer o mesmo — formando profissionais de excelência.</p>
+    <div class="hero-btns">
+      <a href="#tratamentos" class="btn-primary">Ver Tratamentos</a>
+      <a href="#cursos" class="btn-ghost">Conhecer Cursos</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&auto=format&fit=crop&q=80" alt="Estética Facial" loading="lazy">
+    <div class="overlay"><span>Estética Facial</span></div>
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&auto=format&fit=crop&q=80" alt="Drenagem Linfática" loading="lazy">
+    <div class="overlay"><span>Drenagem Linfática</span></div>
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=600&auto=format&fit=crop&q=80" alt="Laser" loading="lazy">
+    <div class="overlay"><span>Laser & Clareamento</span></div>
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&auto=format&fit=crop&q=80" alt="Massagem" loading="lazy">
+    <div class="overlay"><span>Massoterapia</span></div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Resultados Reais</span><span class="star">✦</span>
+    <span>Certificado Incluso</span><span class="star">✦</span>
+    <span>Protocolos Exclusivos</span><span class="star">✦</span>
+    <span>Embasamento Científico</span><span class="star">✦</span>
+    <span>Aulas Práticas</span><span class="star">✦</span>
+    <span>Transformate Estética</span><span class="star">✦</span>
+    <span>Resultados Reais</span><span class="star">✦</span>
+    <span>Certificado Incluso</span><span class="star">✦</span>
+    <span>Protocolos Exclusivos</span><span class="star">✦</span>
+    <span>Embasamento Científico</span><span class="star">✦</span>
+    <span>Aulas Práticas</span><span class="star">✦</span>
+    <span>Transformate Estética</span><span class="star">✦</span>
+  </div>
+</div>
+
+<!-- TRATAMENTOS -->
+<section class="treatments" id="tratamentos">
+  <div class="container">
+    <div class="reveal">
+      <span class="sec-label">O que oferecemos</span>
+      <h2 class="sec-title">Nossos <em>Tratamentos</em></h2>
+    </div>
+
+    <div class="treatments-intro">
+      <div class="treatments-intro-img reveal">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80" alt="Tratamento facial">
+        <div class="treat-badge">
+          <p>Transformate Estética</p>
+          <strong>Ciência + Técnica + Resultado Real</strong>
+        </div>
+      </div>
+      <div class="reveal delay-1">
+        <span class="sec-label">Nossa Filosofia</span>
+        <h3 class="sec-title" style="font-size:clamp(30px,4vw,48px)">Cada pele é <em>única.</em> Cada protocolo, <span class="gold">personalizado.</span></h3>
+        <p style="margin-top:22px;font-size:15px;color:var(--text-mid);line-height:1.85;">Na Transformate, unimos conhecimento científico a técnicas de alta performance para entregar resultados reais e duradouros. Nossos protocolos são desenvolvidos com rigor estético e aplicados com cuidado.</p>
+        <div class="pills-row" style="margin-top:28px;">
+          <span class="pill">🌿 Cosméticos Selecionados</span>
+          <span class="pill">🔬 Protocolos Científicos</span>
+          <span class="pill">💆 Atendimento Personalizado</span>
+          <span class="pill">✅ Resultados Comprovados</span>
+        </div>
+        <a href="https://wa.me/5511977451346?text=Olá!%20Quero%20agendar%20um%20tratamento." target="_blank" class="btn-wine" style="margin-top:32px;">Agendar Tratamento</a>
+      </div>
+    </div>
+
+    <div class="treat-grid">
+      <div class="treat-card reveal">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&auto=format&fit=crop&q=80" alt="Limpeza de pele">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">✨</div>
+          <h4 class="treat-card-title">Limpeza de Pele Profunda</h4>
+          <p class="treat-card-desc">Remoção de cravos, oleosidade e impurezas com vapor de ozônio, extração e finalização com ativos regeneradores. Pele radiante e renovada.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Limpeza%20de%20Pele." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal delay-1">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1502781252888-9143ba7f074e?w=600&auto=format&fit=crop&q=80" alt="Rejuvenescimento">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">🌸</div>
+          <h4 class="treat-card-title">Rejuvenescimento Facial</h4>
+          <p class="treat-card-desc">Alta frequência, eletroterapia e LEDterapia para estimular o colágeno, reduzir linhas de expressão e firmar a pele com resultados progressivos.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Rejuvenescimento%20Facial." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal delay-2">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=600&auto=format&fit=crop&q=80" alt="Manchas">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">🎯</div>
+          <h4 class="treat-card-title">Tratamento para Manchas</h4>
+          <p class="treat-card-desc">Peeling e ativos clareadores com técnica especializada para uniformizar o tom da pele e eliminar manchas de forma eficaz e segura.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Tratamento%20para%20Manchas." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&auto=format&fit=crop&q=80" alt="Drenagem">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">💧</div>
+          <h4 class="treat-card-title">Drenagem Linfática</h4>
+          <p class="treat-card-desc">Técnica manual que ativa o sistema linfático, reduz inchaço, melhora circulação e oxigenação tecidual. Ideal no pós-operatório e na rotina.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Drenagem%20Linfática." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal delay-1">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&auto=format&fit=crop&q=80" alt="Modeladora">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">💪</div>
+          <h4 class="treat-card-title">Massagem Modeladora</h4>
+          <p class="treat-card-desc">Manobras intensas que quebram gordura localizada, estimulam a lipólise e remodelam o contorno corporal. Resultados visíveis desde as primeiras sessões.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Massagem%20Modeladora." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal delay-2">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=600&auto=format&fit=crop&q=80" alt="Laser">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">⚡</div>
+          <h4 class="treat-card-title">Depilação a Laser</h4>
+          <p class="treat-card-desc">O laser que NÃO mancha — trata e clareia a pele! Tecnologia de ponta para remoção de pelos segura, eficaz e com resultados duradouros.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Depilação%20a%20Laser." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&auto=format&fit=crop&q=80" alt="Relaxante">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">🌙</div>
+          <h4 class="treat-card-title">Massagem Relaxante</h4>
+          <p class="treat-card-desc">Técnica suave e envolvente para aliviar tensões, reduzir estresse e promover bem-estar profundo. Perfeita para desacelerar e recuperar a leveza.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Massagem%20Relaxante." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal delay-1">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=600&auto=format&fit=crop&q=80" alt="Lipo Detox">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">🍃</div>
+          <h4 class="treat-card-title">Lipo Detox</h4>
+          <p class="treat-card-desc">Protocolo com manobras, ativos e recursos para estimular o metabolismo, eliminar toxinas e reduzir retenção hídrica com melhora visível da pele.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Lipo%20Detox." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+      <div class="treat-card reveal delay-2">
+        <div class="treat-card-img">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&auto=format&fit=crop&q=80" alt="Eletroterapia">
+        </div>
+        <div class="treat-card-body">
+          <div class="treat-icon">🔋</div>
+          <h4 class="treat-card-title">Eletroterapia Corporal</h4>
+          <p class="treat-card-desc">Correntes elétricas que estimulam músculos, ativam a circulação, reduzem gorduras localizadas e melhoram a firmeza da pele. Ciência e tecnologia juntas.</p>
+          <a href="https://wa.me/5511977451346?text=Quero%20agendar%20Eletroterapia." target="_blank" class="treat-card-link">Agendar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:50px;" class="reveal">
+      <a href="https://wa.me/5511977451346?text=Olá!%20Quero%20agendar%20um%20tratamento." target="_blank" class="btn-primary">Agendar pelo WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="reveal">
+      <span class="sec-label">Nosso Espaço</span>
+      <h2 class="sec-title">Ambiente <em>pensado</em> para você.</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=800&auto=format&fit=crop&q=80" alt="Clínica">
+        <div class="gallery-overlay"><span>Sala de Tratamentos</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&auto=format&fit=crop&q=80" alt="Facial">
+        <div class="gallery-overlay"><span>Estética Facial</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&auto=format&fit=crop&q=80" alt="Tratamento">
+        <div class="gallery-overlay"><span>Cuidado Real</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&auto=format&fit=crop&q=80" alt="Massagem">
+        <div class="gallery-overlay"><span>Massoterapia</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&auto=format&fit=crop&q=80" alt="Relaxamento">
+        <div class="gallery-overlay"><span>Bem-Estar</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section class="courses" id="cursos">
+  <div class="container">
+    <div class="reveal">
+      <span class="sec-label">Formação Profissional</span>
+      <h2 class="sec-title">Torne-se <em>referência</em><br>na estética.</h2>
+      <p style="max-width:520px;margin-top:18px;font-size:15px;color:var(--text-mid);line-height:1.8;">Cursos presenciais com embasamento científico, prática real e certificado incluso. Aqui você não aprende apenas técnicas — você entende o corpo e transforma resultados.</p>
+    </div>
+    <div class="courses-grid">
+
+      <div class="course-card reveal">
+        <div class="ccard-header">
+          <span class="ccard-num">01</span>
+          <p class="ccard-tag">Estética Facial</p>
+          <h3 class="ccard-title">Formação Completa em Estética Facial</h3>
+        </div>
+        <div class="ccard-body">
+          <p class="ccard-desc">Da teoria à prática: aprenda a tratar acne, manchas e sinais de envelhecimento com protocolos avançados e tecnologia de ponta.</p>
+          <p class="module-title">📚 Módulo Teórico</p>
+          <ul class="module-list">
+            <li>Biossegurança e Boas Práticas</li>
+            <li>Anatomia Facial e Fisiologia da Pele</li>
+            <li>Cuidados, Contraindicações e Cosmetologia</li>
+          </ul>
+          <p class="module-title">🤲 Módulo Prático</p>
+          <ul class="module-list">
+            <li>Limpeza de Pele & Extração de Comedões</li>
+            <li>Vapor de Ozônio & Tratamento para Acne</li>
+            <li>Alta Frequência & Rejuvenescimento</li>
+            <li>Manchas, Peeling & Eletroterapia</li>
+            <li>LEDterapia & Massagem Facial</li>
+          </ul>
+          <div class="pills-row">
+            <span class="pill">🎓 Certificado</span>
+            <span class="pill">🧪 Teoria + Prática</span>
+          </div>
+          <div class="price-box">
+            <span class="promo-tag">🔥 Promoção</span>
+            <div class="price-from">De R$ 1.200,00</div>
+            <div class="price-main">6x de R$ 200,00</div>
+            <p class="price-alt">ou <strong>R$ 999,00 no Pix</strong> 👆</p>
+          </div>
+          <a href="https://wa.me/5511977451346?text=Olá!%20Quero%20o%20Curso%20de%20Estética%20Facial." target="_blank" class="btn-wine ccard-cta">Garantir Minha Vaga</a>
+        </div>
+      </div>
+
+      <div class="course-card reveal delay-1">
+        <div class="ccard-header">
+          <span class="ccard-num">02</span>
+          <p class="ccard-tag">Curso 2 em 1 · 60 Horas</p>
+          <h3 class="ccard-title">Estética Corporal & Massoterapia</h3>
+        </div>
+        <div class="ccard-body">
+          <p class="ccard-desc">Formação dupla e completa. 60 horas presenciais entre os melhores protocolos corporais e técnicas de massoterapia reconhecidas no mercado.</p>
+          <p class="module-title">💆 Estética Corporal — 10 Aulas</p>
+          <ul class="module-list">
+            <li>Drenagem Linfática</li>
+            <li>Massagem Modeladora</li>
+            <li>Lipoescultura Gessada</li>
+            <li>Lipo Detox</li>
+            <li>Eletroterapia Aplicada</li>
+          </ul>
+          <p class="module-title">🙌 Massoterapia</p>
+          <ul class="module-list">
+            <li>Massagem Relaxante (Anti-Stress)</li>
+            <li>Massagem Desportiva (Dores Musculares)</li>
+            <li>Massagem Energética (Estimulação)</li>
+          </ul>
+          <div class="pills-row">
+            <span class="pill">⏱ 60 Horas</span>
+            <span class="pill">🎓 Certificado</span>
+            <span class="pill">🗓 Seg. ou Sáb.</span>
+          </div>
+          <div class="price-box">
+            <span class="promo-tag">🔥 Super Promoção</span>
+            <div class="price-from">De R$ 2.200,00</div>
+            <div class="price-main">10x de R$ 180,00</div>
+            <p class="price-alt">ou <strong>R$ 1.499,99 no Pix</strong></p>
+          </div>
+          <a href="https://wa.me/5511977451346?text=Olá!%20Quero%20o%20Curso%202%20em%201." target="_blank" class="btn-wine ccard-cta">Garantir Minha Vaga</a>
+        </div>
+      </div>
+
+      <div class="course-card reveal delay-2">
+        <div class="ccard-header">
+          <span class="ccard-num">03</span>
+          <p class="ccard-tag">⚡ Exclusivo · Vagas Limitadas</p>
+          <h3 class="ccard-title">Depilação a Laser & Clareamento</h3>
+        </div>
+        <div class="ccard-body">
+          <p class="ccard-desc">O laser que NÃO mancha — ele trata E clareia a pele! Aula intensiva de 5 horas com protocolo exclusivo, certificado e contato de fornecedores.</p>
+          <p class="module-title">✅ O Que Você Ganha</p>
+          <ul class="module-list">
+            <li>Aula Prática Intensiva (13h–18h)</li>
+            <li>Certificado Incluso</li>
+            <li>Contato de Fornecedores Exclusivos</li>
+            <li>Protocolos de Clareamento</li>
+            <li>Resultados Comprovados</li>
+          </ul>
+          <div class="pills-row">
+            <span class="pill">⏰ Das 13h às 18h</span>
+            <span class="pill">🔬 Protocolo Exclusivo</span>
+          </div>
+          <div class="price-box">
+            <span class="promo-tag">⏳ Até 20 Jun 2026</span>
+            <div class="price-from">De R$ 1.500,00</div>
+            <div class="price-main">R$ 750,00 no Pix</div>
+            <p class="price-alt">ou <strong>R$ 800,00 no cartão (2x)</strong><br><em style="font-size:11px;color:#c06060;">⚠ Vagas Limitadas!</em></p>
+          </div>
+          <a href="https://wa.me/5511977451346?text=Olá!%20Quero%20o%20Curso%20de%20Laser." target="_blank" class="btn-wine ccard-cta">Garantir Minha Vaga</a>
+        </div>
+      </div>
+
+      <div class="course-card reveal delay-3">
+        <div class="ccard-header">
+          <span class="ccard-num">04</span>
+          <p class="ccard-tag">30 Horas Presenciais</p>
+          <h3 class="ccard-title">Formação em Estética Corporal</h3>
+        </div>
+        <div class="ccard-body">
+          <p class="ccard-desc">Ciência, técnica e resultado real. 10 aulas de 3 horas para dominar os protocolos mais requisitados do mercado estético com segurança e propósito.</p>
+          <p class="module-title">📅 Cronograma — 10 Aulas</p>
+          <ul class="module-list">
+            <li><strong>Aulas 1–2:</strong> Drenagem Linfática</li>
+            <li><strong>Aulas 3–4:</strong> Massagem Modeladora</li>
+            <li><strong>Aulas 5–6:</strong> Lipoescultura Gessada</li>
+            <li><strong>Aulas 7–8:</strong> Lipo Detox</li>
+            <li><strong>Aulas 9–10:</strong> Eletroterapia Aplicada</li>
+          </ul>
+          <div class="pills-row">
+            <span class="pill">📆 Seg. a Sáb.</span>
+            <span class="pill">⏱ 30h Presenciais</span>
+            <span class="pill">🎓 Certificado</span>
+          </div>
+          <div class="price-box">
+            <span class="promo-tag">🔥 Super Promoção</span>
+            <div class="price-from">De R$ 1.300,00</div>
+            <div class="price-main">3x sem juros</div>
+            <p class="price-alt">Consulte condições de boleto</p>
+          </div>
+          <a href="https://wa.me/5511977451346?text=Olá!%20Quero%20a%20Formação%20Corporal%2030h." target="_blank" class="btn-wine ccard-cta">Garantir Minha Vaga</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depos">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label">Quem já transformou</span>
+      <h2 class="sec-title">Resultados <em>reais,</em> pessoas reais.</h2>
+    </div>
+    <div class="depos-grid">
+      <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Fiz a formação de estética corporal e mudou completamente minha carreira. Os protocolos são incríveis e saí sabendo aplicar tudo com segurança."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">A</div>
+          <div><div class="depo-name">Ana Paula M.</div><div class="depo-role">Esteticista — Aluna Formada</div></div>
+        </div>
+      </div>
+      <div class="depo-card reveal delay-1">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Vim fazer drenagem linfática e me apaixonei pelo atendimento. Profissionalismo e resultado desde a primeira sessão. Super recomendo!"</p>
+        <div class="depo-author">
+          <div class="depo-avatar">C</div>
+          <div><div class="depo-name">Camila R.</div><div class="depo-role">Cliente — Tratamentos Corporais</div></div>
+        </div>
+      </div>
+      <div class="depo-card reveal delay-2">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"O curso de laser foi revelador! A instrutora explica tudo com clareza, ótima estrutura e saí com muito mais segurança para trabalhar."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">J</div>
+          <div><div class="depo-name">Juliana F.</div><div class="depo-role">Esteticista — Curso de Laser</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section class="location-sec" id="contato">
+  <div class="container">
+    <div class="reveal">
+      <span class="sec-label">Venha nos Visitar</span>
+      <h2 class="sec-title">Onde <em>estamos</em></h2>
+    </div>
+    <div class="location-grid">
+      <div class="location-img reveal">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&auto=format&fit=crop&q=80" alt="Clínica Transformate">
+      </div>
+      <div class="location-info reveal delay-1">
+        <div class="loc-item">
+          <div class="loc-icon">📍</div>
+          <div>
+            <p class="loc-label">Endereço</p>
+            <p class="loc-value">Av. Sapopemba, 8282</p>
+            <p class="loc-sub">São Paulo – SP</p>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">📲</div>
+          <div>
+            <p class="loc-label">WhatsApp</p>
+            <p class="loc-value">(11) 97745-1346</p>
+            <p class="loc-sub">Atendimento de segunda a sábado</p>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🗓</div>
+          <div>
+            <p class="loc-label">Horários de Aula</p>
+            <p class="loc-value">Segunda a Sábado</p>
+            <p class="loc-sub">Sábados: 9h às 12h · Outros horários disponíveis</p>
+          </div>
+        </div>
+        <a href="https://wa.me/5511977451346?text=Olá!%20Quero%20mais%20informações." target="_blank" class="btn-ghost" style="align-self:flex-start;margin-top:8px;">Falar no WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-bg"></div>
+  <div class="final-content reveal">
+    <span class="sec-label" style="color:var(--gold-light);border-color:rgba(201,169,110,0.4);">Não perca a oportunidade</span>
+    <h2 class="sec-title">Seu futuro começa<br><em>com uma escolha</em><br><span class="gold">inteligente.</span></h2>
+    <p>Vagas limitadas, promoções por tempo limitado. Garanta já seu lugar na Transformate e comece a transformar vidas — começando pela sua.</p>
+    <div class="final-btns">
+      <a href="#cursos" class="btn-primary">Ver os Cursos</a>
+      <a href="https://wa.me/5511977451346" target="_blank" class="btn-ghost">Falar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Transformate Estética</div>
+  <p>Av. Sapopemba, 8282 · São Paulo – SP · (11) 97745-1346</p>
+  <p>Tratamentos estéticos · Formação profissional · Certificado incluso</p>
+  <p style="margin-top:16px;font-size:10px;opacity:0.4;">© 2026 Transformate Estética. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
